@@ -29,9 +29,10 @@ namespace Com0com.Redirector
             {
                 PortPairs = Com0comSetup.GetPortPairs();
             }
-            catch (Exception ex)
+            catch
             { 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Unable to parse com0com ports.  Is com0com installed?");
+                Close();
             }
             InitializeComponent();
             cboCommsMode.ItemsSource = Enum.GetValues(typeof(CommsMode));
@@ -138,6 +139,8 @@ namespace Com0com.Redirector
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (PortPairs == null)
+                return;
             foreach (var pair in PortPairs)
             {
                 pair.StopComms();
@@ -169,8 +172,6 @@ namespace Com0com.Redirector
                 port.StartComms();
             }
         }
-
         #endregion
-
     }
 }

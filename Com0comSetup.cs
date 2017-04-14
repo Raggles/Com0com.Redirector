@@ -41,34 +41,27 @@ namespace Com0com.Redirector
             proc.Start();
             while (!proc.StandardOutput.EndOfStream)
             {
-                try
-                {
-                    string line = proc.StandardOutput.ReadLine();
-                    //get port number
-                    Regex regex = new Regex(@"(?<=CNC[A,B])\d+(?=\s)");
-                    int portnum = int.Parse(regex.Match(line).Value);
-                    
-                    Com0comPortPair pair = ports.FirstOrDefault(d => d.PairNumber == portnum);
+                string line = proc.StandardOutput.ReadLine();
+                //get port number
+                Regex regex = new Regex(@"(?<=CNC[A,B])\d+(?=\s)");
+                int portnum = int.Parse(regex.Match(line).Value);
 
-                    if (pair == null)
-                    {
-                        pair = new Com0comPortPair(portnum);
-                        ports.Add(pair);
-                    }
-                    regex = new Regex(@"(?<=CNC)[A,B](?=\d+\s)");
-                    string portAB = regex.Match(line).Value;
-                    if (portAB == "A")
-                    {
-                        pair.PortConfigStringA = line;
-                    }
-                    else if (portAB == "B")
-                    {
-                        pair.PortConfigStringB = line;
-                    }
-                }
-                catch (Exception ex)
+                Com0comPortPair pair = ports.FirstOrDefault(d => d.PairNumber == portnum);
+
+                if (pair == null)
                 {
-                    MessageBox.Show(ex.ToString());
+                    pair = new Com0comPortPair(portnum);
+                    ports.Add(pair);
+                }
+                regex = new Regex(@"(?<=CNC)[A,B](?=\d+\s)");
+                string portAB = regex.Match(line).Value;
+                if (portAB == "A")
+                {
+                    pair.PortConfigStringA = line;
+                }
+                else if (portAB == "B")
+                {
+                    pair.PortConfigStringB = line;
                 }
             }
             return ports;
