@@ -173,5 +173,10 @@ namespace Com0com.Redirector
             }
         }
         #endregion
+
+        private void listPorts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            btnPortSelect_Click(sender, null);
+        }
     }
 }

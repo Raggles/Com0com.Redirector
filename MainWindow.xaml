@@ -13,7 +13,7 @@
                 <MenuItem Header="Exit" Click="mnuExit_Click"/>
             </MenuItem>
         </Menu>
-        <ListView Name="listPorts" ItemsSource="{Binding PortPairs}" HorizontalAlignment="Left" Width="379" Height="152" VerticalAlignment="Top" Margin="0,23,0,0">
+        <ListView Name="listPorts" ItemsSource="{Binding PortPairs}" HorizontalAlignment="Left" Width="379" Height="152" VerticalAlignment="Top" Margin="0,23,0,0" MouseDoubleClick="listPorts_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding PairNumber}" >

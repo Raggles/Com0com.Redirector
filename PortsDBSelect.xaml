@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Com0com.Redirector.PortsDBSelect"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ports Database" Height="342" Width="365"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}" Icon="MainPowerIconGreen.ico">
+        Title="Ports Database" Height="652.843" Width="764.966"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" >
     <Grid>
         <ListView Name="lstPorts" ItemsSource="{Binding PortsDatabase}" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.View>
