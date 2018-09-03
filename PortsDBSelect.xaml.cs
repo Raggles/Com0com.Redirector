@@ -45,7 +45,8 @@ namespace Com0com.Redirector
 
         private void ReadPorts()
         {
-            var s = new Uri(Path.GetDirectoryName(Assembly.GetEntryAssembly().GetName().CodeBase) + @"\portsdb.txt").LocalPath; ;
+            //var s = new Uri(Path.GetDirectoryName(Assembly.GetEntryAssembly().GetName().CodeBase) + @"\portsdb.txt").LocalPath;
+            var s = Properties.Settings.Default.PortsDBLocation;
             var reader = new StreamReader(File.OpenRead(s));
             while (!reader.EndOfStream)
             {
